@@ -6,6 +6,8 @@ const schema = require('./schema/schema')
 const app = express();
 const port = 4000
 
+const cors = require('cors')
+
 const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://tienkim9920:U4tQMg6Wfy8DaL@cluster0.hlyqt.mongodb.net/Library?retryWrites=true&w=majority", {
   useFindAndModify: false,
@@ -13,6 +15,8 @@ mongoose.connect("mongodb+srv://tienkim9920:U4tQMg6Wfy8DaL@cluster0.hlyqt.mongod
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+
+app.use(cors())
  
 app.use('/graphql', graphqlHTTP({
     schema,
